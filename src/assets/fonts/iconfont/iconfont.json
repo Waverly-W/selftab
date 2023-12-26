@@ -1,0 +1,51 @@
+{
+  "id": "4382442",
+  "name": "bookmarks",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "4936694",
+      "name": "setting-fill",
+      "font_class": "setting-fill",
+      "unicode": "e871",
+      "unicode_decimal": 59505
+    },
+    {
+      "icon_id": "592835",
+      "name": "baidu",
+      "font_class": "baidu",
+      "unicode": "e650",
+      "unicode_decimal": 58960
+    },
+    {
+      "icon_id": "19450103",
+      "name": "雅虎",
+      "font_class": "yahoo-fill",
+      "unicode": "eabe",
+      "unicode_decimal": 60094
+    },
+    {
+      "icon_id": "15378311",
+      "name": "duckduckgo",
+      "font_class": "duckduckgo",
+      "unicode": "eb82",
+      "unicode_decimal": 60290
+    },
+    {
+      "icon_id": "701867",
+      "name": "bing",
+      "font_class": "bing",
+      "unicode": "e69a",
+      "unicode_decimal": 59034
+    },
+    {
+      "icon_id": "702594",
+      "name": "google",
+      "font_class": "google",
+      "unicode": "e8a0",
+      "unicode_decimal": 59552
+    }
+  ]
+}

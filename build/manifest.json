@@ -1,0 +1,36 @@
+{
+  "name": "VoyageMark",
+  "version": "0.1",
+  "description": "VoyageMark 是一款专为提升网上冲浪体验而设计的Chrome插件。利用 Vue 3 的强大功能，它将您的新标签页转化为一个个性化的书签管理中心，呈现出精心布局的瀑布流界面。不仅如此，VoyageMark 还为您提供了一系列定制选项，从视觉主题到布局调整，每个细节都可以根据您的喜好进行个性化设置。借助动态列数调整和响应式设计，无论您是在宽屏显示器上工作还是在移动设备上浏览，VoyageMark 都能为您呈现最佳的视觉效果。简洁而直观的用户界面使得书签的管理变得轻松而愉悦，无论是增加、编辑还是组织您的网站收藏，VoyageMark 都能提供流畅的体验。启程吧，让每次新标签的打开都成为您网上冒险的开始。",
+  "manifest_version": 3,
+  "chrome_url_overrides": {
+    "newtab": "index.html"
+  },
+  "permissions": ["storage","declarativeContent","bookmarks"],
+  "host_permissions":[],
+  "web_accessible_resources": [
+    {
+      "resources": [ "/images/icon.png" ],
+      "matches": ["<all_urls>"]
+    },
+    {
+      "resources": [ "insert.js" ],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "action": {
+    "default_icon": {
+      "16": "/images/icon.png",
+      "32": "/images/icon.png",
+      "48": "/images/icon.png",
+      "128": "/images/icon.png"
+    },
+    "default_title": "Vue CRX MV3"
+  },
+  "icons": {
+    "16": "/images/icon.png",
+    "32": "/images/icon.png",
+    "48": "/images/icon.png",
+    "128": "/images/icon.png"
+  }
+}
