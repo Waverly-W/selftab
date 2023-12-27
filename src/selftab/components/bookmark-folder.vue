@@ -1,13 +1,13 @@
 <template>
   <div class="sub-bookmark-card">
     <div class="popover-container">
-      <div @click="togglePopover" class="popover-trigger" ref="popoverTriggerRef">
+      <div class="popover-trigger" ref="popoverTriggerRef" @click="togglePopover">
         <el-space class="bookmark-folder-title">
           <el-icon v-if="!isPopoverVisible" size="14px" style="color: white"
             ><Folder
           /></el-icon>
           <el-icon v-else size="14px" style="color: white"><FolderOpened /></el-icon>
-          <el-text style="color: white">{{ title }}</el-text>
+          <el-text style="color: white" :style="itemStyle">{{ title }}</el-text>
         </el-space>
       </div>
     </div>
@@ -28,7 +28,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from "vue";
+import { ref, onMounted, onUnmounted, inject, computed } from "vue";
 import { Folder, FolderOpened } from "@element-plus/icons-vue";
 import BookmarkItem from "@/selftab/components/bookmark-item.vue";
 
@@ -39,6 +39,10 @@ const props = defineProps({
     default: () => ref({}),
   },
 });
+const settings = inject("settings");
+const itemStyle = computed(() => ({
+  fontSize: `${settings.value.itemFontSize}em`,
+}));
 const isPopoverVisible = ref(false);
 const popoverTriggerRef = ref(null);
 const popoverContentRef = ref(null);

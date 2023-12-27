@@ -11,7 +11,7 @@
       </template>
       <input type="file" @change="handleFileChange" />
       <div>
-        <label for="blur">Background Blur: </label>
+        <label for="blur">背景模糊: </label>
         <el-slider
           v-model="settings.blur"
           @input="() => updateSettings({ blur: settings.blur })"
@@ -19,10 +19,21 @@
       </div>
 
       <div>
-        <label for="brightness">Background Brightness: </label>
+        <label for="brightness">背景明暗: </label>
         <el-slider
           v-model="settings.brightness"
           @input="() => updateSettings({ brightness: settings.brightness })"
+        />
+      </div>
+
+      <div>
+        <label for="fontsize">书签字体大小: </label>
+        <el-slider
+          v-model="settings.itemFontSize"
+          @input="() => updateSettings({ itemFontSize: settings.itemFontSize })"
+          :step="0.05"
+          :min="0.7"
+          :max="2"
         />
       </div>
     </el-card>

@@ -10,7 +10,7 @@
           @error="handleImgError($event)"
         />
       </div>
-      <el-text truncated class="bookmark-title" size="small">
+      <el-text truncated class="bookmark-title" :style="itemStyle">
         {{ item.title }}
       </el-text>
     </el-space>
@@ -18,20 +18,17 @@
 </template>
 
 <script setup>
-import { computed } from "vue";
+import { computed, inject } from "vue";
 
 // 定义props
 const props = defineProps({
   item: Object,
-  backgroundColor: {
-    type: String,
-    default: "#FFFFFF",
-  },
-  borderRadius: {
-    type: String,
-    default: "4px",
-  },
 });
+
+const settings = inject("settings");
+const itemStyle = computed(() => ({
+  fontSize: `${settings.value.itemFontSize}em`,
+}));
 function getFaviconUrl(url) {
   try {
     const urlObj = new URL(url);

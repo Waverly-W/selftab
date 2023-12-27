@@ -23,8 +23,7 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted, nextTick, watch } from "vue";
-import SubBookmarkComponent from "@/selftab/components/sub-bookmark-component.vue";
+import { ref, onMounted, nextTick } from "vue";
 import BookmarkItem from "@/selftab/components/bookmark-item.vue";
 import BookmarkFolder from "@/selftab/components/bookmark-folder.vue";
 
@@ -40,17 +39,7 @@ const props = defineProps({
 function locationToUrl(url) {
   window.open(url);
 }
-const isExpanded = ref(false);
 const bookmarkListRef = ref(null);
-
-// const colorArray = ["#414b4b", "#383c51", "#3f534b", "#505e60", "#3a3a3a", "#443a3a"];
-// // Function to get a random color from the array
-// const getRandomColor = () => {
-//   const randomIndex = Math.floor(Math.random() * colorArray.length);
-//   return colorArray[randomIndex];
-// };
-
-// const randomBackgroundColor = ref(getRandomColor());
 
 onMounted(async () => {
   await nextTick();

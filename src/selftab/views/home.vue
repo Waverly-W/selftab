@@ -55,10 +55,10 @@ const defaultSettings = {
   imageUrl: "https://fengzi3364.oss-cn-shanghai.aliyuncs.com/img/img.png", // 默认背景图片URL
   blur: 0, // 默认模糊度
   brightness: 50, // 默认明暗度
+  itemFontSize: 1, // 默认字体大小
 };
 
 const settings = ref({ ...defaultSettings });
-
 
 // 更新设置并保存到localStorage
 function updateSettings(updatedValues) {
