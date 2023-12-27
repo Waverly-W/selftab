@@ -32,19 +32,13 @@
     </el-col>
   </el-row>
 
-  <SettingPanel
-    :modelValue="drawer"
-    @update:modelValue="drawer = $event"
-    :maxHeight="maxHeight"
-    @update:maxHeight="handleMaxHeightUpdate"
-  />
+  <SettingPanel :modelValue="drawer" @update:modelValue="drawer = $event" />
 </template>
 
 <script setup>
-import { ref, onMounted, reactive, onUnmounted } from "vue";
+import { ref, onMounted, provide } from "vue";
 import { mockBookmarksData } from "@/assets/mockBookmarksData.js";
 import BookmarkComponentRow from "@/selftab/components/bookmark-component-row.vue";
-import BookmarkSingle from "@/selftab/components/bookmark-single.vue";
 import SearchBar from "@/selftab/components/search-bar.vue";
 import SettingPanel from "@/selftab/components/setting-panel.vue";
 import { Setting, Refresh } from "@element-plus/icons-vue";
@@ -56,8 +50,23 @@ const bookmarksBySingle = ref({});
 const isChromeExtension = typeof chrome !== "undefined" && chrome.bookmarks;
 const bookmarksList = ref([]);
 const drawer = ref(false);
-const maxHeight = ref(300);
 
+const defaultSettings = {
+  imageUrl: "https://fengzi3364.oss-cn-shanghai.aliyuncs.com/img/img.png", // 默认背景图片URL
+  blur: 0, // 默认模糊度
+  brightness: 50, // 默认明暗度
+};
+
+const settings = ref({ ...defaultSettings });
+
+
+// 更新设置并保存到localStorage
+function updateSettings(updatedValues) {
+  settings.value = { ...settings.value, ...updatedValues };
+  localStorage.setItem("appSettings", JSON.stringify(settings.value));
+}
+provide("settings", settings);
+provide("updateSettings", updateSettings);
 //分割书签数据
 const splitBookmarks = (bookmarksData) => {
   const folder = [];
@@ -93,36 +102,6 @@ const findBookmarks = (bookmarks) => {
 // 打开设置面板
 const openSettingPanel = () => {
   drawer.value = true;
-};
-
-// 更新最大高度
-const handleMaxHeightUpdate = (newMaxHeight) => {
-  maxHeight.value = newMaxHeight;
-};
-
-// 布局计算
-const bookmarkCardMinWidth = 240;
-const bookmarkCardMaxWidth = 260;
-const columnGap = 4;
-const layout = reactive({
-  containerWidth: 0,
-  columnCount: 0,
-  cardWidth: 0,
-});
-
-const bookmarkContainerRef = ref(null);
-
-const calculateLayout = () => {
-  if (bookmarkContainerRef.value) {
-    const containerWidth = bookmarkContainerRef.value.offsetWidth;
-    let columnCount = Math.floor(containerWidth / (bookmarkCardMinWidth + columnGap));
-    columnCount = Math.max(columnCount, 1);
-    let cardWidth = containerWidth / columnCount - columnGap;
-    cardWidth = Math.min(cardWidth, bookmarkCardMaxWidth);
-    layout.containerWidth = containerWidth;
-    layout.columnCount = columnCount;
-    layout.cardWidth = cardWidth;
-  }
 };
 
 const saveBookmarksToStorage = () => {
@@ -169,6 +148,11 @@ const loadBookmarksFromJSON = () => {
 };
 
 onMounted(() => {
+  // 背景持久化
+  const savedSettings = localStorage.getItem("appSettings");
+  if (savedSettings) {
+    settings.value = JSON.parse(savedSettings);
+  }
   if (isChromeExtension) {
     loadBookmarksFromStorage().then((isLoadedFromStorage) => {
       if (!isLoadedFromStorage) {
@@ -178,12 +162,6 @@ onMounted(() => {
   } else {
     loadBookmarksFromJSON();
   }
-  calculateLayout();
-  window.addEventListener("resize", calculateLayout);
-});
-
-onUnmounted(() => {
-  window.removeEventListener("resize", calculateLayout);
 });
 </script>
 

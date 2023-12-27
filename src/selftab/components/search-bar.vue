@@ -47,14 +47,16 @@
           :class="{ selected: index === selectedIndex }"
           @click="goToBookmark(item.url)"
         >
-          {{ item.title }}
+          <el-text truncated size="small" style="max-width: 500px">
+            {{ item.title }}
+          </el-text>
         </div>
       </div>
     </teleport>
   </div>
 </template>
 
-<script setup lang="ts">
+<script setup>
 import { Search, ArrowDownBold, ChromeFilled } from "@element-plus/icons-vue";
 import { ref, reactive, onMounted, onUnmounted, watch } from "vue";
 
@@ -94,21 +96,21 @@ const onClickOutside = (event) => {
   }
 };
 
-function searchAction(event: any) {
+function searchAction(event) {
   searchQuery.value = event.target.value.toLowerCase();
-  searchResult.value = props.bookmarks.filter((item: any) =>
+  searchResult.value = props.bookmarks.filter((item) =>
     item.title.toLowerCase().includes(searchQuery.value)
   );
 }
 
-function navigate(step: number) {
+function navigate(step) {
   const resultCount = searchResult.value.length;
   if (resultCount > 0) {
     selectedIndex.value = (selectedIndex.value + step + resultCount) % resultCount;
   }
 }
 
-function goToBookmark(url: string) {
+function goToBookmark(url) {
   window.open(url, "_blank");
 }
 

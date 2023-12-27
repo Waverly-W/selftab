@@ -1,12 +1,20 @@
 <template>
-  <div id="building">
-    <div class="filter" ref="filter"></div>
-  </div>
+  <div id="building" :style="backgroundStyle"></div>
 </template>
+
+<script setup>
+import { computed, inject } from "vue";
+
+const settings = inject("settings");
+
+const backgroundStyle = computed(() => ({
+  backgroundImage: `url(${settings.value.imageUrl})`,
+  filter: `blur(${settings.value.blur}px) brightness(${settings.value.brightness}%)`,
+}));
+</script>
 
 <style scoped lang="scss">
 #building {
-  background: url("https://fengzi3364.oss-cn-shanghai.aliyuncs.com/img/img.png");
   width: 100%;
   height: 100%;
   position: fixed;
@@ -14,11 +22,6 @@
   background-position: center; /* 图片居中显示 */
   top: 0;
   left: 0;
-}
-
-.filter {
-  width: 100%; //大小设置为100%
-  height: 100%; //大小设置为100%
-  backdrop-filter: blur(5px);
+  transform: scale(1.1); //解决代码
 }
 </style>
