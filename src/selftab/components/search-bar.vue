@@ -57,7 +57,7 @@
 </template>
 
 <script setup>
-import { Search, ArrowDownBold, ChromeFilled } from "@element-plus/icons-vue";
+import { Search, ArrowDownBold } from "@element-plus/icons-vue";
 import { ref, reactive, onMounted, onUnmounted, watch } from "vue";
 
 const searchResult = ref([]);
@@ -98,7 +98,7 @@ const onClickOutside = (event) => {
 
 function searchAction(event) {
   searchQuery.value = event.target.value.toLowerCase();
-  searchResult.value = props.bookmarks.filter((item) =>
+  searchResult.value = Object.values(props.bookmarks).filter((item) =>
     item.title.toLowerCase().includes(searchQuery.value)
   );
 }

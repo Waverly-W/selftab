@@ -52,9 +52,9 @@ const bookmarksList = ref([]);
 const drawer = ref(false);
 
 const defaultSettings = {
-  imageUrl: "https://fengzi3364.oss-cn-shanghai.aliyuncs.com/img/img.png", // 默认背景图片URL
-  blur: 2, // 默认模糊度
-  brightness: 100, // 默认明暗度
+  imageUrl: "https://source.unsplash.com/random/1920×1080 ", // 默认背景图片URL
+  blur: 4, // 默认模糊度
+  brightness: 50, // 默认明暗度
   itemFontSize: 0.7, // 默认字体大小
   maxItemWidth: 500,
   titleColor: "white", //标题颜色
