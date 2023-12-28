@@ -2,7 +2,7 @@
   <div class="sub-bookmark-card">
     <div class="popover-container">
       <div class="popover-trigger" ref="popoverTriggerRef" @click="togglePopover">
-        <el-space class="bookmark-folder-title">
+        <el-space class="bookmark-folder-title" :style="folderStyle">
           <el-icon v-if="!isPopoverVisible" size="14px" style="color: white"
             ><Folder
           /></el-icon>
@@ -11,7 +11,12 @@
         </el-space>
       </div>
     </div>
-    <div v-if="isPopoverVisible" class="popover-content" ref="popoverContentRef">
+    <div
+      v-if="isPopoverVisible"
+      class="popover-content"
+      ref="popoverContentRef"
+      :style="subFolderStyle"
+    >
       <div v-for="(item, index) in bookmarksData" :key="index">
         <div v-if="item.url">
           <BookmarkItem :item="item" @click="locationToUrl(item.url)"></BookmarkItem>
@@ -40,9 +45,17 @@ const props = defineProps({
   },
 });
 const settings = inject("settings");
+const folderStyle = computed(() => ({
+  backgroundColor: `${settings.value.itemBackgroundColor}`,
+}));
 const itemStyle = computed(() => ({
   fontSize: `${settings.value.itemFontSize}em`,
+  color: `${settings.value.itemFontColor}`,
 }));
+const subFolderStyle = computed(() => ({
+  backgroundColor: `${settings.value.subFolderBackgroundColor}`,
+}));
+
 const isPopoverVisible = ref(false);
 const popoverTriggerRef = ref(null);
 const popoverContentRef = ref(null);
@@ -101,7 +114,7 @@ onUnmounted(() => {
 .popover-content {
   position: absolute;
   z-index: 100; /* 确保在最上层 */
-  background-color: #ffffff21;
+  background-color:darkgray;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
   padding: 10px;
   border-radius: 4px;
@@ -114,6 +127,7 @@ onUnmounted(() => {
   cursor: pointer;
   /* 添加所需的样式 */
 }
+
 .sub-bookmark-item {
   background-color: #c7c7c72c;
   margin: 4px;

@@ -1,8 +1,8 @@
 <template>
-  <div class="bookmark-card" ref="bookmarkListRef">
+  <div class="bookmark-card" ref="bookmarkListRef" :style="cardStyle">
     <el-col>
       <el-row>
-        <div class="card-header" style="color: white">
+        <div class="card-header" style="color: white" :style="titleFontStyle">
           <a>|&nbsp;&nbsp;{{ title }}</a>
         </div>
       </el-row>
@@ -23,7 +23,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, nextTick } from "vue";
+import { ref, onMounted, nextTick, computed, inject } from "vue";
 import BookmarkItem from "@/selftab/components/bookmark-item.vue";
 import BookmarkFolder from "@/selftab/components/bookmark-folder.vue";
 
@@ -33,13 +33,20 @@ const props = defineProps({
     type: Object,
     default: () => ref({}),
   },
-  cardColor: "#000000",
-  textColor: "#ffffff",
 });
+const settings = inject("settings");
+
 function locationToUrl(url) {
   window.open(url);
 }
 const bookmarkListRef = ref(null);
+const titleFontStyle = computed(() => ({
+  fontSize: `${settings.value.titleFontSize}em`,
+  color: `${settings.value.titleColor}`,
+}));
+const cardStyle = computed(() => ({
+  backgroundColor: `${settings.value.folderBackgroundColor}`,
+}));
 
 onMounted(async () => {
   await nextTick();
@@ -48,12 +55,10 @@ onMounted(async () => {
 
 <style scoped lang="scss">
 .bookmark-card {
-  background-color: rgba(255, 255, 255, 0.127);
   height: auto;
   border-radius: 10px;
   padding: 5px;
   margin: 20px;
-  border-color: aliceblue;
   border: 1px;
 
   .card-header {

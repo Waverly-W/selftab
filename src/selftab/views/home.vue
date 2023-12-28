@@ -53,9 +53,16 @@ const drawer = ref(false);
 
 const defaultSettings = {
   imageUrl: "https://fengzi3364.oss-cn-shanghai.aliyuncs.com/img/img.png", // 默认背景图片URL
-  blur: 0, // 默认模糊度
-  brightness: 50, // 默认明暗度
-  itemFontSize: 1, // 默认字体大小
+  blur: 2, // 默认模糊度
+  brightness: 100, // 默认明暗度
+  itemFontSize: 0.7, // 默认字体大小
+  maxItemWidth: 500,
+  titleColor: "white", //标题颜色
+  titleFontSize: 1.2, //标题字体大小
+  folderBackgroundColor: "rgba(255, 255, 255, 0.127)", //文件夹背景颜色
+  subFolderBackgroundColor: "darkgray", //子文件夹背景颜色
+  itemBackgroundColor: "#c7c7c72c", //书签背景颜色
+  itemFontColor: "white", //书签字体颜色
 };
 
 const settings = ref({ ...defaultSettings });
@@ -65,8 +72,14 @@ function updateSettings(updatedValues) {
   settings.value = { ...settings.value, ...updatedValues };
   localStorage.setItem("appSettings", JSON.stringify(settings.value));
 }
+function toDefaultSettings() {
+  settings.value = { ...defaultSettings };
+  localStorage.setItem("appSettings", JSON.stringify(settings.value));
+}
+
 provide("settings", settings);
 provide("updateSettings", updateSettings);
+provide("toDefaultSettings", toDefaultSettings);
 //分割书签数据
 const splitBookmarks = (bookmarksData) => {
   const folder = [];
@@ -203,11 +216,25 @@ $icon-margin-top: 10px;
 }
 
 .setting-icon {
-  margin: 20px;
   color: white;
   &:hover {
     color: #000000;
     background-color: #f1f1f1;
   }
+}
+
+icon-style {
+  margin: 20px;
+  color: #ffffff; /* 默认颜色 */
+  cursor: pointer;
+  transition: color 0.3s ease; /* 平滑过渡效果 */
+}
+
+.icon-style:hover {
+  color: #cccccc; /* 鼠标悬停时的颜色 */
+}
+
+.icon-style:active {
+  color: #555555; /* 点击时的颜色 */
 }
 </style>

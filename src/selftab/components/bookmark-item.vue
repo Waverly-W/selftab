@@ -1,7 +1,7 @@
 <template>
-  <div class="bookmark-item">
+  <div class="bookmark-item" :style="itemStyle">
     <el-space>
-      <div class="bookmark-icon" :style="styleObject">
+      <div class="bookmark-icon">
         <img
           :src="getFaviconUrl(item.url)"
           alt="bookmark"
@@ -10,7 +10,7 @@
           @error="handleImgError($event)"
         />
       </div>
-      <el-text truncated class="bookmark-title" :style="itemStyle">
+      <el-text truncated class="bookmark-title" :style="itemFontStyle">
         {{ item.title }}
       </el-text>
     </el-space>
@@ -26,8 +26,14 @@ const props = defineProps({
 });
 
 const settings = inject("settings");
-const itemStyle = computed(() => ({
+const itemFontStyle = computed(() => ({
   fontSize: `${settings.value.itemFontSize}em`,
+  color: `${settings.value.itemFontColor}`,
+  maxWidth: `${settings.value.maxItemWidth - 50}px`,
+}));
+const itemStyle = computed(() => ({
+  maxWidth: `${settings.value.maxItemWidth}px`,
+  backgroundColor: `${settings.value.itemBackgroundColor}`,
 }));
 function getFaviconUrl(url) {
   try {
@@ -42,16 +48,12 @@ function getFaviconUrl(url) {
 function handleImgError(event) {
   event.target.src = "https://fengzi3364.oss-cn-shanghai.aliyuncs.com/img/icon16.png"; // 替换为你的默认图标
 }
-
-// 计算样式对象
-const styleObject = computed(() => ({
-  backgroundColor: props.backgroundColor,
-  borderRadius: props.borderRadius,
-}));
 </script>
 
 <style scoped>
 .bookmark-icon {
+  background-color: white;
+  border-radius: 50%;
   width: 20px;
   height: 20px;
   display: flex;
@@ -61,20 +63,16 @@ const styleObject = computed(() => ({
 .bookmark-icon img {
   width: 14px;
   height: 14px;
-  min-width: 14px; /* 或者适当的尺寸 */
 }
 
 .bookmark-title {
   color: white;
-  max-width: 450px;
 }
 .bookmark-item {
-  background-color: #c7c7c72c;
   margin: 4px;
   padding: 6px 10px 6px 10px;
   border-radius: 10px;
   transition: all 0.3s ease; /* 为下划线添加平滑过渡效果 */
-  max-width: 500px;
   overflow: hidden;
 
   &:hover {
