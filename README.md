@@ -4,7 +4,7 @@
 
 # 预览
 
-![](https://fengzi3364.oss-cn-shanghai.aliyuncs.com/img/202312281422435.png)
+![](https://fengzi3364.oss-cn-shanghai.aliyuncs.com/img/202312281445198.png)
 
 ## 功能
 

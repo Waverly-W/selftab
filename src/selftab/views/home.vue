@@ -16,6 +16,7 @@
       </el-row>
       <el-col>
         <bookmark-component-row
+        v-if="bookmarksBySingle.length > 0"
           :title="'收藏夹栏'"
           :bookmarks-data="bookmarksBySingle"
         ></bookmark-component-row>
