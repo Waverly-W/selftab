@@ -48,6 +48,18 @@
           "
         />
       </div>
+
+      <div>
+        <label for="fontsize">文件夹边距: </label>
+        <el-slider
+          v-model="settings.folderMargin"
+          @input="() => updateSettings({ folderMargin: settings.folderMargin })"
+          :step="2"
+          :min="10"
+          :max="50"
+        />
+      </div>
+
       <div>
         <label for="fontsize">子文件夹背景颜色: </label>
         <el-color-picker
@@ -127,12 +139,48 @@
           :max="1000"
         />
       </div>
+
+      <div>
+        <label for="fontsize">书签最小宽度: </label>
+        <el-slider
+          v-model="settings.minItemWidth"
+          @input="() => updateSettings({ minItemWidth: settings.minItemWidth })"
+          :step="50"
+          :min="50"
+          :max="settings.maxItemWidth"
+        />
+      </div>
+
+      <div>
+        <label for="fontsize">书签左右边距: </label>
+        <el-slider
+          v-model="settings.itemLeftRightMargin"
+          @input="
+            () => updateSettings({ itemLeftRightMargin: settings.itemLeftRightMargin })
+          "
+          :step="1"
+          :min="1"
+          :max="20"
+        />
+      </div>
+
+      <div>
+        <label for="fontsize">书签上下边距: </label>
+        <el-slider
+          v-model="settings.itemTopBottomMargin"
+          @input="
+            () => updateSettings({ itemTopBottomMargin: settings.itemTopBottomMargin })
+          "
+          :step="1"
+          :min="1"
+          :max="20"
+        />
+      </div>
     </div>
   </el-drawer>
 </template>
 
 <script setup>
-import { ElSpace } from "element-plus";
 import { ref, inject, watch } from "vue";
 const props = defineProps({
   modelValue: Boolean,

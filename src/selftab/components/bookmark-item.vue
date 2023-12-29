@@ -33,7 +33,12 @@ const itemFontStyle = computed(() => ({
 }));
 const itemStyle = computed(() => ({
   maxWidth: `${settings.value.maxItemWidth}px`,
+  minWidth: `${settings.value.minItemWidth}px`,
   backgroundColor: `${settings.value.itemBackgroundColor}`,
+  marginTop: `${settings.value.itemTopBottomMargin}px`,
+  marginLeft: `${settings.value.itemLeftRightMargin}px`,
+  marginBottom: `${settings.value.itemTopBottomMargin}px`,
+  marginRight: `${settings.value.itemLeftRightMargin}px`,
 }));
 function getFaviconUrl(url) {
   try {
@@ -69,7 +74,6 @@ function handleImgError(event) {
   color: white;
 }
 .bookmark-item {
-  margin: 4px;
   padding: 6px 10px 6px 10px;
   border-radius: 10px;
   transition: all 0.3s ease; /* 为下划线添加平滑过渡效果 */

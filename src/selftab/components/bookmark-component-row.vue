@@ -46,6 +46,7 @@ const titleFontStyle = computed(() => ({
 }));
 const cardStyle = computed(() => ({
   backgroundColor: `${settings.value.folderBackgroundColor}`,
+  margin: `${settings.value.folderMargin}px`,
 }));
 
 onMounted(async () => {
@@ -58,7 +59,6 @@ onMounted(async () => {
   height: auto;
   border-radius: 10px;
   padding: 5px;
-  margin: 20px;
   border: 1px;
 
   .card-header {

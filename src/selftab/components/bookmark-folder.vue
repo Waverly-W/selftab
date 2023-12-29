@@ -114,13 +114,13 @@ onUnmounted(() => {
 .popover-content {
   position: absolute;
   z-index: 100; /* 确保在最上层 */
-  background-color:darkgray;
+  background-color: darkgray;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
   padding: 10px;
   border-radius: 4px;
   top: 100%; /* 确保弹出框在触发器下方 */
   left: 0; /* 根据需要调整 */
-  width: 300px; /* 根据需要调整 */
+  width: auto; /* 根据需要调整 */
   /* 其他样式 */
 }
 .popover-trigger {

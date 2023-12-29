@@ -58,12 +58,16 @@ const defaultSettings = {
   brightness: 50, // 默认明暗度
   itemFontSize: 0.7, // 默认字体大小
   maxItemWidth: 500,
+  minItemWidth: 200,
   titleColor: "white", //标题颜色
   titleFontSize: 1.2, //标题字体大小
   folderBackgroundColor: "rgba(255, 255, 255, 0.127)", //文件夹背景颜色
   subFolderBackgroundColor: "darkgray", //子文件夹背景颜色
   itemBackgroundColor: "#c7c7c72c", //书签背景颜色
   itemFontColor: "white", //书签字体颜色
+  itemLeftRightMargin: 4, //书签左右边距
+  itemTopBottomMargin: 4, //书签上下边距
+  folderMargin: 20, //文件夹边距
 };
 
 const settings = ref({ ...defaultSettings });
