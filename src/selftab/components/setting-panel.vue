@@ -1,6 +1,6 @@
 <template>
   <el-drawer v-model="drawer" :show-close="false" :with-header="false">
-    <el-row type="flex" justify="space-between" align="middle">
+    <el-row type="flex" justify="space-between" align="middle" style="height: 30px">
       <h3>设置</h3>
       <el-button @click="toDefaultSettings" size="small">恢复默认</el-button>
     </el-row>
@@ -185,7 +185,9 @@ import { ref, inject, watch } from "vue";
 const props = defineProps({
   modelValue: Boolean,
 });
-
+const settings = inject("settings");
+const updateSettings = inject("updateSettings");
+const toDefaultSettings = inject("toDefaultSettings");
 const emit = defineEmits(["update:modelValue"]);
 const drawer = ref(props.modelValue);
 
@@ -234,10 +236,6 @@ const predefineColors = ref([
   "hsla(209, 100%, 56%, 0.73)",
   "#c7158577",
 ]);
-
-const settings = inject("settings");
-const updateSettings = inject("updateSettings");
-const toDefaultSettings = inject("toDefaultSettings");
 </script>
 
 <style scoped>

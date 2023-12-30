@@ -10,13 +10,13 @@
   </el-row>
 
   <el-row :gutter="20">
-    <el-col :span="20" :offset="2">
+    <el-col :span="18" :offset="3">
       <el-row class="search-bar" justify="center">
         <search-bar :bookmarks="bookmarksList"></search-bar>
       </el-row>
       <el-col>
         <bookmark-component-row
-        v-if="bookmarksBySingle.length > 0"
+          v-if="bookmarksBySingle.length > 0"
           :title="'收藏夹栏'"
           :bookmarks-data="bookmarksBySingle"
         ></bookmark-component-row>
@@ -59,15 +59,16 @@ const defaultSettings = {
   itemFontSize: 0.7, // 默认字体大小
   maxItemWidth: 500,
   minItemWidth: 200,
-  titleColor: "white", //标题颜色
+  titleColor: "#1E1E2E", //标题颜色
   titleFontSize: 1.2, //标题字体大小
   folderBackgroundColor: "rgba(255, 255, 255, 0.127)", //文件夹背景颜色
-  subFolderBackgroundColor: "darkgray", //子文件夹背景颜色
-  itemBackgroundColor: "#c7c7c72c", //书签背景颜色
-  itemFontColor: "white", //书签字体颜色
+  subFolderBackgroundColor: "#c7c7c72c", //子文件夹背景颜色
+  itemBackgroundColor: "#CBA6F7", //书签背景颜色
+  itemFontColor: "#1E1E2E", //书签字体颜色
   itemLeftRightMargin: 4, //书签左右边距
   itemTopBottomMargin: 4, //书签上下边距
   folderMargin: 20, //文件夹边距
+  bookmarkColWidth: 20,
 };
 
 const settings = ref({ ...defaultSettings });
