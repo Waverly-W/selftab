@@ -2,7 +2,7 @@
   <div class="bookmark-card" ref="bookmarkListRef" :style="cardStyle">
     <el-col>
       <el-row>
-        <div class="card-header" style="color: white" :style="titleFontStyle">
+        <div class="card-header" :style="titleFontStyle">
           <a>|&nbsp;&nbsp;{{ title }}</a>
         </div>
       </el-row>
