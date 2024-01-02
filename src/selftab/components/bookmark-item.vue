@@ -1,7 +1,7 @@
 <template>
   <div class="bookmark-item" :style="itemStyle">
     <el-space>
-      <div class="bookmark-icon">
+      <div class="bookmark-icon" :style="iconStyle">
         <img
           :src="getFaviconUrl(item.url)"
           alt="bookmark"
@@ -26,6 +26,9 @@ const props = defineProps({
 });
 
 const settings = inject("settings");
+const iconStyle = computed(() => ({
+  backgroundColor: `${settings.value.itemIconBackgroundColor}`,
+}));
 const itemFontStyle = computed(() => ({
   fontSize: `${settings.value.itemFontSize}em`,
   color: `${settings.value.itemFontColor}`,
@@ -57,7 +60,6 @@ function handleImgError(event) {
 
 <style scoped>
 .bookmark-icon {
-  background-color: white;
   border-radius: 50%;
   width: 20px;
   height: 20px;

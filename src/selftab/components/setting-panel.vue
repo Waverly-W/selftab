@@ -118,6 +118,17 @@
           @change="() => updateSettings({ itemFontColor: settings.itemFontColor })"
         />
       </div>
+
+      <div>
+        <label for="fontsize">书签图标背景颜色: </label>
+        <el-color-picker
+          v-model="settings.itemIconBackgroundColor"
+          show-alpha
+          :predefine="predefineColors"
+          @change="() => updateSettings({ itemIconBackgroundColor: settings.itemIconBackgroundColor })"
+        />
+      </div>
+
       <div>
         <label for="fontsize">书签字体大小: </label>
         <el-slider
@@ -177,6 +188,19 @@
         />
       </div>
     </div>
+    <div>
+      <h4>其他设置</h4>
+      <div>
+        <label for="fontsize">是否在新标签页中打开链接: </label>
+        <el-switch 
+        v-model="settings.openNewUrlInNewTab"
+        @change="
+            () =>
+              updateSettings({ openNewUrlInNewTab: settings.openNewUrlInNewTab })
+          "
+         />
+      </div>
+      </div>
   </el-drawer>
 </template>
 

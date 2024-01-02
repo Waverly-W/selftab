@@ -57,19 +57,20 @@ const defaultSettings = {
   blur: 4, // 默认模糊度
   brightness: 50, // 默认明暗度
   itemFontSize: 0.7, // 默认字体大小
-  maxItemWidth: 300,
-  minItemWidth: 300,
-  titleColor: "#1E1E2E", //标题颜色
+  maxItemWidth: 200,
+  minItemWidth: 200,
+  titleColor: "rgba(255, 255, 255, 1)", //标题颜色
   titleFontSize: 1.2, //标题字体大小
-  folderBackgroundColor: "rgba(255, 255, 255, 0.127)", //文件夹背景颜色
-  subFolderBackgroundColor: "#c7c7c72c", //子文件夹背景颜色
-  itemBackgroundColor: "#CBA6F7", //书签背景颜色
-  itemFontColor: "#1E1E2E", //书签字体颜色
+  folderBackgroundColor: "rgba(255, 255, 255, 0.12)", //文件夹背景颜色
+  subFolderBackgroundColor: "rgba(147, 147, 147, 1)", //子文件夹背景颜色
+  itemBackgroundColor: "rgba(255, 255, 255, 0.85)", //书签背景颜色
+  itemFontColor: "rgba(68, 68, 68, 1)", //书签字体颜色
   itemLeftRightMargin: 4, //书签左右边距
   itemTopBottomMargin: 4, //书签上下边距
   folderMargin: 20, //文件夹边距
   bookmarkColWidth: 20,
-  itemIconBackgroundColor: "#CBA6F7", //书签图标背景颜色
+  itemIconBackgroundColor: "rgba(255, 255, 255, 1)", //书签图标背景颜色
+  openNewUrlInNewTab: true, // 是否在新标签页中打开链接
 };
 
 const settings = ref({ ...defaultSettings });

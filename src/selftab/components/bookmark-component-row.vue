@@ -37,8 +37,13 @@ const props = defineProps({
 const settings = inject("settings");
 
 function locationToUrl(url) {
-  window.open(url);
+  if (settings.value.openNewUrlInNewTab) {
+    window.open(url);
+  } else {
+    window.location.href = url;
+  }
 }
+
 const bookmarkListRef = ref(null);
 const titleFontStyle = computed(() => ({
   fontSize: `${settings.value.titleFontSize}em`,
