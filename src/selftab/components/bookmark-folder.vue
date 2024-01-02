@@ -3,10 +3,10 @@
     <div class="popover-container">
       <div class="popover-trigger" ref="popoverTriggerRef" @click="togglePopover">
         <el-space class="bookmark-folder-title" :style="folderStyle">
-          <el-icon v-if="!isPopoverVisible" size="14px" style="color: white"
+          <el-icon v-if="!isPopoverVisible" size="14px" :style="itemStyle"
             ><Folder
           /></el-icon>
-          <el-icon v-else size="14px" style="color: white"><FolderOpened /></el-icon>
+          <el-icon v-else size="14px" :style="itemStyle"><FolderOpened /></el-icon>
           <el-text style="color: white" :style="itemStyle">{{ title }}</el-text>
         </el-space>
       </div>

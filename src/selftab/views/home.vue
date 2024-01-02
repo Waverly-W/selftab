@@ -57,8 +57,8 @@ const defaultSettings = {
   blur: 4, // 默认模糊度
   brightness: 50, // 默认明暗度
   itemFontSize: 0.7, // 默认字体大小
-  maxItemWidth: 500,
-  minItemWidth: 200,
+  maxItemWidth: 300,
+  minItemWidth: 300,
   titleColor: "#1E1E2E", //标题颜色
   titleFontSize: 1.2, //标题字体大小
   folderBackgroundColor: "rgba(255, 255, 255, 0.127)", //文件夹背景颜色
@@ -69,6 +69,7 @@ const defaultSettings = {
   itemTopBottomMargin: 4, //书签上下边距
   folderMargin: 20, //文件夹边距
   bookmarkColWidth: 20,
+  itemIconBackgroundColor: "#CBA6F7", //书签图标背景颜色
 };
 
 const settings = ref({ ...defaultSettings });
